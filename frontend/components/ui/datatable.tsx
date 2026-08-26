@@ -1,6 +1,12 @@
 "use client"
 
-import { useTable, type ColumnDef, type RowData, type TableFeatures, type TableOptions } from "@tanstack/react-table"
+import {
+  useTable,
+  type ColumnDef,
+  type RowData,
+  type TableFeatures,
+  type TableOptions,
+} from "@tanstack/react-table"
 
 import {
   Table,
@@ -12,7 +18,10 @@ import {
 } from "@/components/ui/table"
 import { cn } from "@/lib/utils"
 
-interface DataTableProps<TFeatures extends TableFeatures, TData extends RowData> {
+interface DataTableProps<
+  TFeatures extends TableFeatures,
+  TData extends RowData,
+> {
   features: TFeatures
   columns: ColumnDef<TFeatures, TData>[]
   data: TData[]
@@ -20,7 +29,10 @@ interface DataTableProps<TFeatures extends TableFeatures, TData extends RowData>
   isLoading?: boolean
 }
 
-export function DataTable<TFeatures extends TableFeatures, TData extends RowData>({
+export function DataTable<
+  TFeatures extends TableFeatures,
+  TData extends RowData,
+>({
   features,
   columns,
   data,
@@ -33,14 +45,17 @@ export function DataTable<TFeatures extends TableFeatures, TData extends RowData
   } as unknown as TableOptions<TFeatures, TData>)
 
   return (
-    <div className="overflow-hidden rounded-xl border">
-      <Table>
+    <div className="overflow-x-auto rounded-xl border">
+      <Table className="min-w-[50rem]">
         <TableHeader className="bg-muted text-xs">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="text-muted-foreground tracking-tight">
+                  <TableHead
+                    key={header.id}
+                    className="tracking-tight text-muted-foreground"
+                  >
                     {header.isPlaceholder ? null : (
                       <table.FlexRender header={header} />
                     )}
@@ -51,10 +66,19 @@ export function DataTable<TFeatures extends TableFeatures, TData extends RowData
           ))}
         </TableHeader>
         <TableBody>
-
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row, index) => (
-              <TableRow key={row.id} className={cn('', alternateRowColours ? index % 2 == 0 ? '' : 'bg-muted/80' : '')}>
+              <TableRow
+                key={row.id}
+                className={cn(
+                  "",
+                  alternateRowColours
+                    ? index % 2 == 0
+                      ? ""
+                      : "bg-muted/80"
+                    : ""
+                )}
+              >
                 {row.getAllCells().map((cell) => (
                   <TableCell key={cell.id}>
                     <table.FlexRender cell={cell} />
@@ -69,8 +93,6 @@ export function DataTable<TFeatures extends TableFeatures, TData extends RowData
               </TableCell>
             </TableRow>
           )}
-
-
         </TableBody>
       </Table>
     </div>

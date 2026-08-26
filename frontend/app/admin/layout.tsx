@@ -1,14 +1,12 @@
-import AdminTopBar from "@/components/admin/top-bar"
-
+import AdminTopBar from '@/components/admin/top-bar'
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='h-full w-full p-8x bg-muted flex flex-col gap-4'>
+    <div className="flex h-full w-full flex-col gap-3 bg-muted p-3 sm:gap-4 sm:p-5 lg:p-8">
       <AdminTopBar />
-      <div className='bg-card rounded-4xl h-full w-full p-6'>
+      <div className="h-full w-full min-w-0 rounded-2xl bg-card p-3 sm:rounded-4xl sm:p-6">
         {children}
       </div>
-
     </div>
   )
 }
