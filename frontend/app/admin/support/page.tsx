@@ -10,15 +10,15 @@ import { mockSupportTickets } from "@/data/mock/support-ticket"
 
 const AdminSupportTicketsPage = () => {
   return (
-    <div className="flex h-full w-full flex-col gap-4">
+    <div className="flex h-full w-full flex-col gap-4x">
       <div
         id="section-heading"
-        className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between"
+        className="flex flex-col items-stretch gap-3x sm:flex-row sm:items-center sm:justify-between"
       >
         <span className="text-lg font-medium">Support Tickets</span>
 
-        <div className="flex min-w-0 items-center gap-2">
-          <InputGroup className="flex min-w-0 flex-1 bg-card p-4 sm:w-[15rem] sm:flex-none">
+        <div className="flex min-w-0 items-center gap-2x">
+          <InputGroup className="flex min-w-0 flex-1 bg-card p-4x sm:w-input-sm sm:flex-none">
             <InputGroupInput
               id="inline-end-input"
               placeholder="Ticket Search"
